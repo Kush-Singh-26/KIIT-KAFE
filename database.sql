@@ -82,7 +82,7 @@ CREATE TABLE order_items (
 -- Sample Food Data
 INSERT INTO foods (name, description, price, category, image_url) VALUES
 -- Original Items
-('Coca Cola', '400ml Cold Bottle', 40.00, 'Beverages', 'https://unsplash.com/photos/coca-cola-can-z8PEoNIlGlg?w=300&q=80'),
+('Coca Cola', '400ml Cold Bottle', 40.00, 'Beverages', 'https://images.unsplash.com/photo-1716800586014-fea19e9453fb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29sYXxlbnwwfHwwfHx8MA%3D%3D?w=300&q=80'),
 ('Cold Coffee', 'Creamy Iced Coffee', 89.00, 'Coffee & Drinks', 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=300&q=80'),
 ('Matcha Latte', 'Organic Green Tea', 99.00, 'Coffee & Drinks', 'https://images.unsplash.com/photo-1536256263959-770b48d82b0a?w=300&q=80'),
 ('Signature Cold Brew', '12-hour Steeped', 89.00, 'Coffee & Drinks', 'https://images.unsplash.com/photo-1481833761820-0509d3217039?w=300&q=80'),
@@ -128,15 +128,20 @@ INSERT INTO foods (name, description, price, category, image_url) VALUES
 ('Egg Fried Rice', 'With Scrambled Eggs', 150.00, 'Meals', 'https://images.unsplash.com/photo-1687020836451-41977907509e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZWdnJTIwZnJpZWQlMjByaWNlfGVufDB8fDB8fHww?w=300&q=80'),
 ('Chicken Fried Rice', 'Classic Chinese', 170.00, 'Meals', 'https://images.unsplash.com/photo-1679735386220-e8888925676e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y2hpY2tlbiUyMGZyaWVkJTIwcmljZXxlbnwwfHwwfHx8MA%3D%3D?w=300&q=80'),
 ('Paneer Butter Masala', 'With Naan', 180.00, 'Meals', 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGFuZWVyJTIwYnV0dGVyJTIwbWFzYWxhfGVufDB8fDB8fHww?w=300&q=80'),
-('Butter Chicken', 'With Naan', 200.00, 'Meals', 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnV0dGVyJTIwY2hpY2tlbnxlbnwwfHwwfHx8MA%3D%3D?w=300&q=80');
-
--- Initial Stock Levels
+('Butter Chicken', 'With Naan', 200.00, 'Meals', 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnV0dGVyJTIwY2hpY2tlbnxlbnwwfHwwfHx8MA%3D%3D?w=300&q=80'),
+-- Wafers
+('Chocolate Wafers', 'Crispy sweet snack wafers', 60.00, 'Wafers', 'https://images.unsplash.com/photo-1662484844144-92710767c951?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=300&q=80'),
+('Vanilla Wafers', 'Crispy sweet snack wafers', 60.00, 'Wafers', 'https://images.unsplash.com/photo-1612739406198-71fc29b3c1c9?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=300&q=80'),
+-- Hotdogs
+('Grilled Chicken Hot Dog', 'Grilled chicken sausage in a bun with sauces', 100.00, 'HotDogs', 'https://plus.unsplash.com/premium_photo-1712327986117-4a01fe7b0724?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGdyaWxsZWQlMjBob3QlMjBkb2d8ZW58MHx8MHx8fDA%3D?w=300&q=80'),
+('Cheese Hot Dog', 'Veg sausage with melted cheese and sauces', 80.00, 'HotDogs', 'https://images.unsplash.com/photo-1768250908696-dbdcc594ec68?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2hlZXNlJTIwaG90JTIwZG9nfGVufDB8fDB8fHww?w=300&q=80');
+    
 INSERT INTO stock (food_id, quantity) VALUES
 (1, 20), (2, 15), (3, 10), (4, 12), (5, 30), (6, 5), (7, 18),
 (8, 15), (9, 15), (10, 15), (11, 25), (12, 20), (13, 15),
 (14, 20), (15, 15), (16, 15), (17, 15), (18, 15), (19, 20), (20, 15),
 (21, 20), (22, 15), (23, 15), (24, 15), (25, 12), (26, 20), (27, 15), (28, 15), (29, 12), (30, 10),
 (31, 15), (32, 20), (33, 15), (34, 12), (35, 15),
-(36, 10), (37, 10), (38, 12), (39, 10), (40, 10), (41, 10), (42, 10);
+(36, 10), (37, 10), (38, 12), (39, 10), (40, 10), (41, 10), (42, 10),(43, 10), (44, 10), (45, 10), (46, 10);
 
 
