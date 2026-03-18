@@ -2,8 +2,6 @@
      PAGE 2: AUTH
 ═══════════════════════════════════════ -->
 <div id="page-auth" class="page">
-  <div class="auth-bg-left">🍔</div>
-  <div class="auth-bg-right">🥤</div>
   <div class="auth-card">
     <button class="back-auth" onclick="nav('landing')">← Back to Home</button>
     <div class="auth-tabs">
@@ -58,9 +56,9 @@
     <!-- FORGOT -->
     <div class="auth-form-section" id="auth-forgot">
       <button class="back-auth" onclick="showLogin()">← Back to Login</button>
-      <h3 style="font-family:'Syne',sans-serif;font-size:20px;font-weight:900;color:white;margin-bottom:8px;">Reset Password</h3>
-      <p style="font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:20px;">Enter your registered email to receive a reset link.</p>
-      <div style="margin-bottom:20px;">
+      <h3 style="font-family:'Playfair Display',serif;font-size:24px;font-weight:900;color:#f2ece0;margin-bottom:12px;">Reset Password</h3>
+      <p style="font-size:14px;color:rgba(242,236,224,0.6);margin-bottom:24px;">Enter your registered email to receive a reset link.</p>
+      <div style="margin-bottom:24px;">
         <div class="auth-label">Email Address</div>
         <input class="auth-input" type="email" id="forgot-email" placeholder="you@kiit.ac.in">
       </div>

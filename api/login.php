@@ -18,6 +18,12 @@ $user = $stmt->fetch();
 
 if ($user) {
     if ($password === $user['password']) {
+        $_SESSION["user_id"] = $user['id'];
+        $_SESSION["user_name"] = $user['name'];
+        $_SESSION["user_email"] = $user['email'];
+        $_SESSION["user_phone"] = $user['phone'];
+        $_SESSION["user_role"] = $user['role'];
+
         echo json_encode([
             "status" => "success",
             "user" => [

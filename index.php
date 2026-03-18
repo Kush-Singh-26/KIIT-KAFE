@@ -1,5 +1,7 @@
 <?php include 'includes/head.php'; ?>
 <body>
+    <div class="item-tooltip" id="tooltip"></div>
+    <canvas id="canvas3d"></canvas>
     <?php 
       // Basic Routing for PHP to pass initial page to JS
       $request = $_SERVER['REQUEST_URI'];

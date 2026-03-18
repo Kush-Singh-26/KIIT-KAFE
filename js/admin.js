@@ -188,7 +188,7 @@ function renderAdminOrders() {
                     <p>Date: ${new Date(o.created_at).toLocaleString()}</p>
                 </div>
                 <div class="aoc-actions">
-                    ${o.status === 'Pending' ? `<button class="ai-btn edit" style="width:100%; background:var(--lime); color:var(--dark); border:none; margin-bottom:8px;" onclick="updateOrderStatus(${o.id}, 'Preparing')">Confirm Cash Payment</button>` : ''}
+                    ${o.status === 'Pending' ? `<button class="ai-btn edit" style="width:100%; background:var(--lime); color:var(--dark); border:none; margin-bottom:8px;" onclick="updateOrderStatus(${o.id}, 'Preparing')">Confirm Payment</button>` : ''}
                     <select onchange="updateOrderStatus(${o.id}, this.value)" class="status-select">
                         <option value="Pending" ${o.status === 'Pending' ? 'selected' : ''}>Pending</option>
                         <option value="Preparing" ${o.status === 'Preparing' ? 'selected' : ''}>Preparing</option>

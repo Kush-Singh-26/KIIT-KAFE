@@ -11,7 +11,7 @@
         <button class="admin-nav-btn" onclick="switchAdminTab('stock', this)">📦 Stock Manager</button>
         <button class="admin-nav-btn" onclick="switchAdminTab('orders', this)">📋 Active Orders</button>
         <button class="admin-nav-btn" onclick="nav('landing')">🚪 Exit to Site</button>
-        <button class="admin-nav-btn" style="margin-top:auto; color:#ff6b6b;" onclick="currentUser=null;nav('landing')">🔒 Logout</button>
+        <button class="admin-nav-btn" style="margin-top:auto; color:#ff6b6b;" onclick="doLogout()">🔒 Logout</button>
       </nav>
     </aside>
 

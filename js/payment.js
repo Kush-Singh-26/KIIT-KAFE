@@ -2,10 +2,18 @@
    PAYMENT
 ═══════════════════════════════════════════ */
 
+let useUPIIntent = false;
+let lastPlacedOrderId = null;
+
 function selectPay(method) {
   selectedPayMethod = method;
-  ['pay-upi','pay-qr','pay-cash'].forEach(id => document.getElementById(id).classList.remove('selected'));
-  document.getElementById('pay-' + method).classList.add('selected');
+  useUPIIntent = false; // Reset when method changes
+  ['pay-upi','pay-cash'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.classList.remove('selected');
+  });
+  const selEl = document.getElementById('pay-' + method);
+  if(selEl) selEl.classList.add('selected');
   document.getElementById('upi-sub').classList.toggle('show', method === 'upi');
 }
 
@@ -30,23 +38,39 @@ function renderPaymentPage() {
     </div>
   `).join('');
   document.getElementById('payment-total').textContent = '₹' + t.grand;
+
+  // Add listener for manual UPI validation
+  const upiInput = document.getElementById('upi-id-input');
+  const manualBtn = document.getElementById('btn-manual-pay');
+  if (upiInput && manualBtn) {
+    upiInput.addEventListener('input', (e) => {
+      const val = e.target.value.trim();
+      // Strict UPI validation: alphanum/dot/dash @ provider
+      const isValid = /^[a-zA-Z0-9.\-_]{2,256}@[a-zA-Z]{2,64}$/.test(val);
+      manualBtn.disabled = !isValid;
+    });
+  }
 }
 
 function generateUPIQR() {
   const t = getCartTotals();
-  const upiID = "kiitkafe@upi";
+  const upiID = "9667556317@ptaxis";
   const amount = t.grand;
   const upiURL = `upi://pay?pa=${upiID}&pn=KIIT%20KAFE&am=${amount}&cu=INR`;
   const qrAPI = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(upiURL)}`;
   document.getElementById("upi-qr").src = qrAPI;
 }
 
-function payWithApp(app){
-  const t = getCartTotals();
-  const upiID = "kiitkafe@upi";
-  const amount = t.grand;
-  const upiLink = `upi://pay?pa=${upiID}&pn=KIIT%20KAFE&am=${amount}&cu=INR`;
-  window.location.href = upiLink;
+function payWithApp(){
+  useUPIIntent = true;
+  placeOrder();
+}
+
+function payWithManualUPI() {
+  const upiID = document.getElementById('upi-id-input').value.trim();
+  if (!upiID) return;
+  useUPIIntent = true;
+  placeOrder();
 }
 
 function placeOrder() {
@@ -56,13 +80,15 @@ function placeOrder() {
   const t = getCartTotals();
   const now = new Date();
   const dateStr = now.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}) + ' at ' + now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
-  const payLabels = { upi:'UPI Payment', qr:'QR Scan', cash:'Cash Payment' };
+  const payLabels = { upi:'UPI Payment', cash:'Cash Payment' };
 
-  // Save meta for refresh
+  const upiID = "9667556317@ptaxis";
+  const upiLink = `upi://pay?pa=${upiID}&pn=KIIT%20KAFE&am=${t.grand}&cu=INR`;
+
   const orderMeta = {
       orderCode: currentOrderId,
       date: dateStr,
-      payMethod: payLabels[selectedPayMethod],
+      payMethod: payLabels[selectedPayMethod] || 'UPI Payment',
       name: currentUser.name,
       email: currentUser.email,
       phone: currentUser.phone || '8809989XXX',
@@ -74,22 +100,19 @@ function placeOrder() {
   // Fill UI
   document.getElementById('suc-order-num').textContent = currentOrderId;
   document.getElementById('suc-date').textContent = dateStr;
-  document.getElementById('suc-pay').textContent = payLabels[selectedPayMethod];
+  document.getElementById('suc-pay').textContent = payLabels[selectedPayMethod] || 'UPI Payment';
   document.getElementById('suc-name').textContent = currentUser.name;
   document.getElementById('suc-email').textContent = currentUser.email;
   document.getElementById('suc-phone').textContent = currentUser.phone || '8809989XXX';
   document.getElementById('suc-addr').textContent = 'KP-25 Block A, Workers Colony, KIIT University, Bhubaneswar';
 
-  // Success items list...
-  // Wait, I should also save the items list to restore it on refresh.
-  // Actually, for a single session, sessionStorage is fine.
   sessionStorage.setItem('lastOrderItems', JSON.stringify(cart));
 
   document.getElementById('inv-modal-ref').textContent = 'Invoice ' + currentOrderId;
   document.getElementById('inv-m-customer').textContent = currentUser.name;
   document.getElementById('inv-m-orderid').textContent = currentOrderId;
   document.getElementById('inv-m-date').textContent = dateStr;
-  document.getElementById('inv-m-pay').textContent = payLabels[selectedPayMethod] + ' ✓';
+  document.getElementById('inv-m-pay').textContent = (payLabels[selectedPayMethod] || 'UPI Payment') + ' ✓';
   document.getElementById('inv-m-items').innerHTML = cart.map(item => `
     <div class="inv-line-item"><span>${item.emoji} ${item.name} × ${item.qty}</span><span>₹${item.price * item.qty}</span></div>
   `).join('');
@@ -113,32 +136,43 @@ function placeOrder() {
   .then(res => res.json())
   .then(data => {
     if (data.status === "success") {
-      // Show success modal
-      document.getElementById('success-modal-order-id').textContent = currentOrderId;
-      document.getElementById('payment-success-modal').classList.add('show');
-      
-      if (selectedPayMethod === 'cash') {
-        startCashPolling(data.order_id);
-      } else {
-        // For UPI/QR, mark as complete after showing modal
-        finishOrder(data.order_id);
-      }
+      lastPlacedOrderId = data.order_id;
+      startPaymentPolling(data.order_id, upiLink);
     } else {
-      // Show failure modal
       document.getElementById('failure-modal-reason').textContent = data.message || 'Payment processing failed';
       document.getElementById('payment-failure-modal').classList.add('show');
     }
+    useUPIIntent = false; // Reset after attempt
   })
   .catch(err => {
     console.error("Order error:", err);
     document.getElementById('failure-modal-reason').textContent = 'Connection error. Please try again.';
     document.getElementById('payment-failure-modal').classList.add('show');
+    useUPIIntent = false;
   });
 }
 
-function startCashPolling(orderId) {
-  document.getElementById('cash-waiting-modal').classList.add('show');
+function startPaymentPolling(orderId, upiLink) {
+  const icon = document.getElementById('pay-wait-icon');
+  const title = document.getElementById('pay-wait-title');
+  const desc = document.getElementById('pay-wait-desc');
+
+  if (selectedPayMethod === 'cash') {
+    icon.textContent = '💵';
+    title.textContent = 'Waiting for Cash Payment';
+    desc.textContent = 'Please pay at the counter. Your order will be confirmed once the payment is received by the admin.';
+  } else {
+    icon.textContent = '📱';
+    title.textContent = 'Verifying UPI Payment';
+    desc.textContent = 'Please complete the payment in your UPI app. We are waiting for the admin to confirm your payment.';
+  }
+
+  document.getElementById('payment-waiting-modal').classList.add('show');
   
+  if (useUPIIntent && upiLink) {
+    window.location.href = upiLink;
+  }
+
   if (statusPollInterval) clearInterval(statusPollInterval);
   
   statusPollInterval = setInterval(() => {
@@ -147,11 +181,42 @@ function startCashPolling(orderId) {
     .then(data => {
       if (data.status === 'success' && data.order_status !== 'Pending') {
         clearInterval(statusPollInterval);
-        closeModal('cash-waiting-modal');
+        closeModal('payment-waiting-modal');
+        
+        // Now show success modal
+        document.getElementById('success-modal-order-id').textContent = currentOrderId;
+        document.getElementById('payment-success-modal').classList.add('show');
+        
         finishOrder(orderId);
       }
     });
   }, 3000);
+}
+
+function cancelPaymentOrder() {
+  if (confirm("Are you sure you want to cancel this order?")) {
+    const orderIdToCancel = lastPlacedOrderId;
+    if (orderIdToCancel) {
+      fetch("api/cancel_order.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ order_id: orderIdToCancel })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === "success") {
+          toast("✅ Order cancelled successfully");
+        } else {
+          console.error("Cancellation error:", data.message);
+        }
+      })
+      .catch(err => console.error("Cancellation fetch error:", err));
+    }
+
+    clearInterval(statusPollInterval);
+    closeModal('payment-waiting-modal');
+    nav('menu');
+  }
 }
 
 function finishOrder(orderId) {
@@ -249,15 +314,6 @@ function startOrderTracking(orderId) {
         if (data.status === 'success') updateUI(data.order_status);
       });
   }, 5000);
-}
-
-function cancelCashOrder() {
-  if (confirm("Are you sure you want to cancel this order?")) {
-    clearInterval(statusPollInterval);
-    closeModal('cash-waiting-modal');
-    toast("Order cancelled");
-    nav('menu');
-  }
 }
 
 function completePayment(){ toast("✅ Payment successful"); }

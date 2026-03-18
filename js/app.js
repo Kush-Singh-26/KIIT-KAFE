@@ -31,46 +31,26 @@ async function fetchMenuData() {
 // Initial fetch
 fetchMenuData();
 
-/* ═══════════════════════════════════════════
-   HERO SLIDESHOW
-═══════════════════════════════════════════ */
-let slideshowInterval = null;
-let messageInterval = null;
+// Initialize on load
+document.addEventListener('DOMContentLoaded', async () => {
+  // Check session
+  try {
+    const res = await fetch('api/get_session.php');
+    const data = await res.json();
+    if (data.status === 'success') {
+      currentUser = data.user;
+      currentUser.isAdmin = data.user.role === 'admin';
+      
+      const welcomeName = document.getElementById('welcome-name');
+      if (welcomeName) welcomeName.textContent = currentUser.name;
+    }
+  } catch (err) {
+    console.error("Session error:", err);
+  }
 
-function initHeroSlideshow() {
-  const slides = document.querySelectorAll('.hero-slideshow .slide');
-  const messages = document.querySelectorAll('.hero-message');
-  
-  if (slides.length === 0) return;
-  
-  let currentSlide = 0;
-  let currentMessage = 0;
-  
-  // Change slide every 5 seconds
-  slideshowInterval = setInterval(() => {
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active');
-  }, 5000);
-  
-  // Change message every 3 seconds
-  messageInterval = setInterval(() => {
-    messages[currentMessage].classList.remove('active');
-    currentMessage = (currentMessage + 1) % messages.length;
-    messages[currentMessage].classList.add('active');
-  }, 3000);
-}
-
-// Initialize slideshow on page load
-document.addEventListener('DOMContentLoaded', () => {
-  initHeroSlideshow();
   const startPage = window.initialPage || 'landing';
   nav(startPage, false);
 });
-
-// Clear intervals when navigating away
-const originalNav = nav;
-// Note: nav is defined later, so we'll handle cleanup in nav function
 
 /* ═══════════════════════════════════════════
    NAVIGATION & ROUTING
@@ -90,10 +70,12 @@ function nav(page, push = true) {
   }
 
   // Clear intervals when navigating away from certain pages
-  if (page !== 'landing' && slideshowInterval) {
-    clearInterval(slideshowInterval);
-    clearInterval(messageInterval);
+  if (page === 'landing' || page === 'auth') {
+    initLandingDesign();
+  } else {
+    stopLandingDesign();
   }
+
   if (page !== 'success' && orderTrackingInterval) {
     clearInterval(orderTrackingInterval);
     orderTrackingInterval = null;
@@ -162,12 +144,6 @@ function nav(page, push = true) {
       switchAdminTab('dash');
   }
 }
-
-// Initialize on load - already handled in slideshow section
-// document.addEventListener('DOMContentLoaded', () => {
-//   const startPage = window.initialPage || 'landing';
-//   nav(startPage, false);
-// });
 
 /* ═══════════════════════════════════════════
    UTILS

@@ -153,13 +153,20 @@ function afterLogin() {
 }
 
 function doLogout() {
-  currentUser = null;
-  cart = [];
-  discount = 0;
-  updateCartIndicators();
-  closeModal('account-modal');
-  toast('👋 Logged out successfully');
-  nav('landing');
+  fetch("api/logout.php")
+    .then(() => {
+      currentUser = null;
+      cart = [];
+      discount = 0;
+      updateCartIndicators();
+      closeModal('account-modal');
+      toast('👋 Logged out successfully');
+      nav('landing');
+    })
+    .catch(err => {
+      console.error("Logout error:", err);
+      toast("❌ Logout failed. Try again.");
+    });
 }
 
 function showAccountMenu() {

@@ -43,7 +43,6 @@ function renderMenuGrid() {
   const sortVal = document.getElementById('menu-sort')?.value;
   if (sortVal === 'price-low') filtered.sort((a,b) => a.price - b.price);
   if (sortVal === 'price-high') filtered.sort((a,b) => b.price - a.price);
-  if (sortVal === 'rating') filtered.sort((a,b) => b.rating - a.rating);
 
   grid.innerHTML = filtered.map(item => {
     const inCart = cart.find(c => c.id === item.id);
@@ -64,7 +63,7 @@ function renderMenuGrid() {
           <button onclick="changeMenuQty(${item.id},1)">+</button>
         </div>`;
     } else {
-      qtyControls = `<button class="add-btn" onclick="addToCartById(${item.id})">ADD +</button>`;
+      qtyControls = `<button class="add-btn" onclick="addToCartById(${item.id})">+</button>`;
     }
 
     return `<div class="item-card ${isOutOfStock ? 'disabled' : ''}">

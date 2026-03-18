@@ -62,6 +62,10 @@ $sql = "UPDATE users SET " . implode(", ", $updates) . " WHERE id = ?";
 $stmt = $conn->prepare($sql);
 
 if ($stmt->execute($params)) {
+    if (isset($_SESSION["user_id"]) && $_SESSION["user_id"] == $user_id) {
+        if ($name) $_SESSION["user_name"] = $name;
+        if ($phone) $_SESSION["user_phone"] = $phone;
+    }
     echo json_encode(["status" => "success", "message" => "Profile updated"]);
 } else {
     echo json_encode(["status" => "error", "message" => "Update failed"]);

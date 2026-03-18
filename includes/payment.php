@@ -16,32 +16,30 @@
           <span class="opt-icon">📱</span> UPI Payment
         </div>
         <div class="upi-sub" id="upi-sub">
-        <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
-
-<button onclick="payWithApp('gpay')" style="flex:1;padding:10px;background:#4285F4;color:white;border-radius:8px;font-weight:700">
-GPay
-</button>
-
-<button onclick="payWithApp('phonepe')" style="flex:1;padding:10px;background:#5f259f;color:white;border-radius:8px;font-weight:700">
-PhonePe
-</button>
-
-<button onclick="payWithApp('paytm')" style="flex:1;padding:10px;background:#00baf2;color:white;border-radius:8px;font-weight:700">
-Paytm
-</button>
-
-</div>
-          <p style="font-size:13px;font-weight:700;color:#444;margin-bottom:10px;">Enter UPI ID or Scan QR</p>
-          <input class="upi-input" type="text" placeholder="yourname@upi or @phonepe" id="upi-id-input">
-          <div class="qr-box" style="margin-top:14px;">
-            <div class="qr-code">
-  <img id="upi-qr" width="120">
-</div>
-            <p>Scan with any UPI app</p>
+          <button class="btn-upi-app" onclick="payWithApp()">
+            <span style="font-size:20px;">📱</span> Pay via any UPI App
+          </button>
+          
+          <div style="display:flex;align-items:center;margin:16px 0;gap:12px;">
+            <div style="flex:1;height:1px;background:#eee;"></div>
+            <div style="font-size:12px;color:#999;font-weight:700;">OR SCAN QR</div>
+            <div style="flex:1;height:1px;background:#eee;"></div>
           </div>
-        </div>
-        <div class="pay-opt" id="pay-qr" onclick="selectPay('qr')">
-          <span class="opt-icon">🔳</span> Scan with QR
+
+          <div class="qr-box" style="margin-top:0;padding:16px;">
+            <div class="qr-code" style="margin-bottom:8px;">
+              <img id="upi-qr" width="100">
+            </div>
+            <p style="margin-bottom:0;">Scan with GPay, PhonePe, Paytm etc.</p>
+          </div>
+          
+          <div style="margin-top:16px;" class="manual-upi-group">
+            <p style="font-size:12px;font-weight:700;color:#666;margin-bottom:8px;">Manual UPI ID Entry</p>
+            <input class="upi-input" type="text" placeholder="yourname@upi or @phonepe" id="upi-id-input">
+            <button id="btn-manual-pay" class="btn-pay-manual" disabled onclick="payWithManualUPI()">
+              Confirm & Pay Now
+            </button>
+          </div>
         </div>
         <div class="pay-opt" id="pay-cash" onclick="selectPay('cash')">
           <span class="opt-icon">💵</span> Cash Payment

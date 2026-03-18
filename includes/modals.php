@@ -79,17 +79,17 @@
   </div>
 </div>
 
-<!-- CASH WAITING MODAL -->
-<div class="modal-overlay" id="cash-waiting-modal">
+<!-- PAYMENT WAITING MODAL -->
+<div class="modal-overlay" id="payment-waiting-modal">
   <div style="background:white;border-radius:24px;padding:40px;max-width:400px;width:100%;text-align:center;animation:popIn 0.3s ease both;">
-    <div style="font-size:60px;margin-bottom:20px;">💵</div>
-    <h3 style="font-family:'Syne',sans-serif;font-size:22px;font-weight:900;color:#1a1a1a;margin-bottom:12px;">Waiting for Cash Payment</h3>
-    <p style="color:#666;font-size:14px;line-height:1.6;margin-bottom:24px;">Please pay at the counter. Your order will be confirmed once the payment is received by the admin.</p>
+    <div style="font-size:60px;margin-bottom:20px;" id="pay-wait-icon">💵</div>
+    <h3 style="font-family:'Syne',sans-serif;font-size:22px;font-weight:900;color:#1a1a1a;margin-bottom:12px;" id="pay-wait-title">Waiting for Cash Payment</h3>
+    <p style="color:#666;font-size:14px;line-height:1.6;margin-bottom:24px;" id="pay-wait-desc">Please pay at the counter. Your order will be confirmed once the payment is received by the admin.</p>
     <div style="display:flex;align-items:center;justify-content:center;gap:12px;color:var(--green-mid);font-weight:700;font-size:14px;">
       <div class="spinner-sm" style="width:16px;height:16px;border:2px solid var(--green-mid);border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;"></div>
       Verifying payment status...
     </div>
-    <button onclick="cancelCashOrder()" style="margin-top:32px;width:100%;padding:14px;background:#f8f9fa;color:#888;border-radius:12px;font-weight:700;font-size:14px;">Cancel Order</button>
+    <button onclick="cancelPaymentOrder()" style="margin-top:32px;width:100%;padding:14px;background:#f8f9fa;color:#888;border-radius:12px;font-weight:700;font-size:14px;">Cancel Order</button>
   </div>
 </div>
 

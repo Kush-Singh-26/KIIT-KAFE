@@ -36,7 +36,7 @@ try {
         $deduct->execute([$qty, $food_id]);
     }
 
-    $initialStatus = ($payment === 'cash') ? 'Pending' : 'Preparing';
+    $initialStatus = 'Pending';
     $stmt = $conn->prepare("INSERT INTO orders (order_code, user_id, payment_method, total, status) VALUES (?, ?, ?, ?, ?)");
     $stmt->execute([$order_code, $user_id, $payment, $total, $initialStatus]);
     $order_id = $conn->lastInsertId();
