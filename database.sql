@@ -101,14 +101,14 @@ INSERT INTO foods (name, description, price, category, image_url) VALUES
 ('Cappuccino', 'Espresso with Steamed Milk', 100.00, 'Coffee & Drinks', 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=300&q=80'),
 ('Americano', 'Black Coffee', 80.00, 'Coffee & Drinks', 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=300&q=80'),
 ('Mocha', 'Chocolate Coffee Blend', 110.00, 'Coffee & Drinks', 'https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?w=300&q=80'),
-('Caramel Macchiato', 'Vanilla & Caramel', 120.00, 'Coffee & Drinks', 'https://images.unsplash.com/photo-1485808191679-5f8c7c8f37e9?w=300&q=80'),
+('Caramel Macchiato', 'Vanilla & Caramel', 120.00, 'Coffee & Drinks', 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Q2FyYW1lbCUyME1hY2NoaWF0b3xlbnwwfHwwfHx8MA%3D%3D?w=300&q=80'),
 ('Green Tea', 'Organic Herbal', 50.00, 'Coffee & Drinks', 'https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=300&q=80'),
 ('Hot Chocolate', 'Rich Cocoa Drink', 90.00, 'Coffee & Drinks', 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=300&q=80'),
 -- Additional Snacks
 ('French Fries', 'Crispy Salted Fries', 80.00, 'Snacks', 'https://images.unsplash.com/photo-1585109649139-366815a0d713?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZnJlbmNoJTIwZnJpZXN8ZW58MHx8MHx8fDA%3D?w=300&q=80'),
 ('Veg Burger', 'Classic Veg Patty', 100.00, 'Snacks', 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dmVnJTIwYnVyZ2VyfGVufDB8fDB8fHww?w=300&q=80'),
 ('Cheese Burger', 'Double Cheese Patty', 130.00, 'Snacks', 'https://images.unsplash.com/photo-1547584370-2cc98b8b8dc8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2hlZXNlJTIwYnVyZ2VyfGVufDB8fDB8fHww?w=300&q=80'),
-('Veg Momos', 'Steamed Dumplings (8pcs)', 90.00, 'Snacks', 'https://media.istockphoto.com/id/1748107051/photo/veg-steamed-momo-nepalese-traditional-dish-momo-stuffed-with-vegetables-and-then-cooked-and.webp?a=1&b=1&s=612x612&w=0&k=20&c=zs9jYhHHgYAkqHFFOxWxCLG5Pn_N_2u6ap5IFoTYr4s=?w=300&q=80'),
+('Veg Momos', 'Steamed Dumplings (8pcs)', 90.00, 'Snacks', 'https://images.unsplash.com/photo-1664138218128-2dcf791a9d27?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fG1vbW9zfGVufDB8fDB8fHww?a=1&b=1&s=612x612&w=0&k=20&c=zs9jYhHHgYAkqHFFOxWxCLG5Pn_N_2u6ap5IFoTYr4s=?w=300&q=80'),
 ('Chicken Momos', 'Steamed Dumplings (8pcs)', 120.00, 'Snacks', 'https://images.unsplash.com/photo-1738608084602-f9543952188e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y2hpY2tlbiUyMG1vbW9zfGVufDB8fDB8fHww?w=300&q=80'),
 ('Garlic Bread', 'Toasted with Butter', 70.00, 'Snacks', 'https://images.unsplash.com/photo-1573140401552-3fab0b24306f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z2FybGljJTIwYnJlYWR8ZW58MHx8MHx8fDA%3D?w=300&q=80'),
 ('Nachos', 'Tortilla Chips with Salsa', 100.00, 'Snacks', 'https://plus.unsplash.com/premium_photo-1680118670547-0746d4101cbd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmFjaG9zfGVufDB8fDB8fHww?w=300&q=80'),
@@ -133,8 +133,8 @@ INSERT INTO foods (name, description, price, category, image_url) VALUES
 ('Chocolate Wafers', 'Crispy sweet snack wafers', 60.00, 'Wafers', 'https://images.unsplash.com/photo-1662484844144-92710767c951?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=300&q=80'),
 ('Vanilla Wafers', 'Crispy sweet snack wafers', 60.00, 'Wafers', 'https://images.unsplash.com/photo-1612739406198-71fc29b3c1c9?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=300&q=80'),
 -- Hotdogs
-('Grilled Chicken Hot Dog', 'Grilled chicken sausage in a bun with sauces', 100.00, 'HotDogs', 'https://plus.unsplash.com/premium_photo-1712327986117-4a01fe7b0724?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGdyaWxsZWQlMjBob3QlMjBkb2d8ZW58MHx8MHx8fDA%3D?w=300&q=80'),
-('Cheese Hot Dog', 'Veg sausage with melted cheese and sauces', 80.00, 'HotDogs', 'https://images.unsplash.com/photo-1768250908696-dbdcc594ec68?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2hlZXNlJTIwaG90JTIwZG9nfGVufDB8fDB8fHww?w=300&q=80');
+('Grilled Chicken Hot Dog', 'Grilled chicken sausage in a bun with sauces', 100.00, 'Hot Dogs', 'https://plus.unsplash.com/premium_photo-1712327986117-4a01fe7b0724?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGdyaWxsZWQlMjBob3QlMjBkb2d8ZW58MHx8MHx8fDA%3D?w=300&q=80'),
+('Cheese Hot Dog', 'Veg sausage with melted cheese and sauces', 80.00, 'Hot Dogs', 'https://images.unsplash.com/photo-1768250908696-dbdcc594ec68?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2hlZXNlJTIwaG90JTIwZG9nfGVufDB8fDB8fHww?w=300&q=80');
     
 INSERT INTO stock (food_id, quantity) VALUES
 (1, 20), (2, 15), (3, 10), (4, 12), (5, 30), (6, 5), (7, 18),

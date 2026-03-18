@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
 <?php
-  $baseHref = '/' . basename(dirname(__DIR__)) . '/';
-  echo "<base href=\"$baseHref\">";
+  // Calculate dynamic base path based on the script location relative to server root
+  $basePath = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
+  if ($basePath !== '/') $basePath .= '/';
+  echo "<base href=\"$basePath\">";
 ?>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

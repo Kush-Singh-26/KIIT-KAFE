@@ -5,12 +5,12 @@ let MENU = [];
 
 const CATS = ['All','Beverages','Wafers','Snacks','Coffee & Drinks','Hot Dogs','Biryani'];
 const CAT_IMAGES = {
-  All: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=150&h=150&fit=crop&q=80',
+  All: 'https://plus.unsplash.com/premium_photo-1673108852141-e8c3c22a4a22?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D?w=150&h=150&fit=crop&q=80',
   Beverages: 'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=150&h=150&fit=crop&q=80',
-  Wafers: 'https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=150&h=150&fit=crop&q=80',
+  Wafers: 'https://plus.unsplash.com/premium_photo-1726072358288-54effc624aa9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8d2FmZXJzfGVufDB8fDB8fHww?w=150&h=150&fit=crop&q=80',
   Snacks: 'https://images.unsplash.com/photo-1621236378699-8597faf6a176?w=150&h=150&fit=crop&q=80',
   'Coffee & Drinks': 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=150&h=150&fit=crop&q=80',
-  'Hot Dogs': 'https://images.unsplash.com/photo-1612392062631-9dda2e44b5f5?w=150&h=150&fit=crop&q=80',
+  'Hot Dogs': 'https://plus.unsplash.com/premium_photo-1684923610869-204f1ca6a603?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=150&h=150&fit=crop&q=80',
   Biryani: 'https://images.unsplash.com/photo-1633945274405-b6c8069047b0?w=150&h=150&fit=crop&q=80'
 };
 
@@ -100,7 +100,7 @@ function nav(page, push = true) {
 
   // Update URL
   if (push) {
-    const url = page === 'landing' ? '/KIIT-KAFE/' : `/KIIT-KAFE/${page}`;
+    const url = page === 'landing' ? window.basePath : `${window.basePath}${page}`;
     history.pushState({ page }, '', url);
   }
 
