@@ -90,12 +90,12 @@ INSERT INTO foods (name, description, price, category, image_url) VALUES
 ('Club Sandwich', 'Veg Grilled Sandwich', 120.00, 'Snacks', 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=300&q=80'),
 ('Pizza', '7-inch Cheese Pizza', 199.00, 'Snacks', 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=300&q=80'),
 -- Additional Beverages
-('Pepsi', '400ml Cold Bottle', 40.00, 'Beverages', 'https://unsplash.com/photos/blue-and-red-pepsi-can-eEumkKjg7Jo?w=300&q=80'),
-('Sprite', '400ml Cold Bottle', 40.00, 'Beverages', 'https://unsplash.com/photos/a-can-of-sprite-on-a-wooden-stand-with-limes-RH2ZA73kHiA?w=300&q=80'),
-('Fanta', '400ml Cold Bottle', 40.00, 'Beverages', 'https://unsplash.com/photos/fanta-orange-can-on-brown-wooden-table-aKYu-H5pHJY?w=300&q=80'),
-('Mineral Water', '1L Kinley', 20.00, 'Beverages', 'https://unsplash.com/photos/a-close-up-of-a-bottle-of-water-0_he2akLhyA?w=300&q=80'),
-('Fresh Lime Soda', 'Sweet & Tangy', 50.00, 'Beverages', 'https://unsplash.com/photos/glass-of-cucumber-soda-drink-on-wooden-table-summer-healthy-detox-infused-water-lemonade-or-cocktail-background-low-alcohol-nonalcoholic-drinks-super-food-vegetarian-or-healthy-diet-concept-8sttKwOr6wE?w=300&q=80'),
-('Mango Lassi', 'Traditional Yogurt Drink', 60.00, 'Beverages', 'https://unsplash.com/photos/mango-and-lemon-juice-lw8GflbJwLc?w=300&q=80'),
+('Pepsi', '400ml Cold Bottle', 40.00, 'Beverages', 'https://images.unsplash.com/photo-1629203851122-3726ecdf080e?q=80&w=929&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=300&q=80'),
+('Sprite', '400ml Cold Bottle', 40.00, 'Beverages', 'https://images.unsplash.com/photo-1680404005217-a441afdefe83?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dw=300&q=80'),
+('Fanta', '400ml Cold Bottle', 40.00, 'Beverages', 'https://images.unsplash.com/photo-1624517452488-04869289c4ca?q=80&w=503&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=300&q=80'),
+('Mineral Water', '1L Kinley', 20.00, 'Beverages', 'https://images.unsplash.com/photo-1638688569176-5b6db19f9d2a?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=300&q=80'),
+('Fresh Lime Soda', 'Sweet & Tangy', 50.00, 'Beverages', 'https://plus.unsplash.com/premium_photo-1661510500212-e3d96478a574?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=300&q=80'),
+('Mango Lassi', 'Traditional Yogurt Drink', 60.00, 'Beverages', 'https://images.unsplash.com/photo-1546173159-315724a31696?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=300&q=80'),
 -- Additional Coffee & Drinks
 ('Espresso', 'Single Shot', 70.00, 'Coffee & Drinks', 'https://images.unsplash.com/photo-1510591509098-f4fdc816d704?w=300&q=80'),
 ('Cappuccino', 'Espresso with Steamed Milk', 100.00, 'Coffee & Drinks', 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=300&q=80'),
